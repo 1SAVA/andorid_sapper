@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation.xml"
+    app:startDestination="@id/titleFragment">
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.sapper.TitleFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_mainGame"
+            app:destination="@id/mainGame"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainGame"
+        android:name="com.example.sapper.game.MainGame"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_main_game">
+        <action
+            android:id="@+id/action_mainGame_to_victoryFragment"
+            app:destination="@id/victoryFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_mainGame_to_loseFragment"
+            app:destination="@id/loseFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="size"
+            app:argType="integer" />
+        <argument
+            android:name="bombs"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/loseFragment"
+        android:name="com.example.sapper.LoseFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_lose">
+        <action
+            android:id="@+id/action_loseFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="time"
+            app:argType="integer" />
+        <argument
+            android:name="flagsSetted"
+            app:argType="integer" />
+        <argument
+            android:name="flagsCorrect"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/victoryFragment"
+        android:name="com.example.sapper.VictoryFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_victory">
+        <action
+            android:id="@+id/action_victoryFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="time"
+            app:argType="integer" />
+    </fragment>
+</navigation>
